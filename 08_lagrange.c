@@ -10,8 +10,10 @@ int main() {
   scanf("%d", &n);
 
   for (int i = 0; i < n; i++) {
-    printf("x[%d], y[%d]: ", i, i);
-    scanf("%lf %lf", &x[i], &y[i]);
+    printf("x[%d]: ", i);
+    scanf("%lf", &x[i]);
+    printf("y[%d]: ", i);
+    scanf("%lf", &y[i]);
   }
 
   double xp;

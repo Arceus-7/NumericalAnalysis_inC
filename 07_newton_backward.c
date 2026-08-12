@@ -10,8 +10,10 @@ int main() {
   scanf("%d", &n);
 
   for (int i = 0; i < n; i++) {
-    printf("x[%d], y[%d]: ", i, i);
-    scanf("%lf %lf", &x[i], &y[i]);
+    printf("x[%d]: ", i);
+    scanf("%lf", &x[i]);
+    printf("y[%d]: ", i);
+    scanf("%lf", &y[i]);
   }
 
   double h = x[1] - x[0];
@@ -22,6 +24,19 @@ int main() {
   for (int j = 1; j < n; j++)
     for (int i = j; i < n; i++)
       diff[i][j] = diff[i][j - 1] - diff[i - 1][j - 1];
+
+  printf("\nBackward Difference Table:\n\n");
+  printf("%-10s%-12s", "x", "y");
+  for (int j = 1; j < n; j++)
+    printf("Nabla^%-6d", j);
+  printf("\n");
+
+  for (int i = 0; i < n; i++) {
+    printf("%-10.4f", x[i]);
+    for (int j = 0; j <= i; j++)
+      printf("%-12.4f", diff[i][j]);
+    printf("\n");
+  }
 
   double xp;
   printf("\nEnter x to interpolate: ");
