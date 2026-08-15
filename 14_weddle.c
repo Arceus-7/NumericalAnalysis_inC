@@ -1,10 +1,7 @@
 #include <math.h>
 #include <stdio.h>
-#include <stdlib.h>
 
-#ifndef M_PI
 #define M_PI 3.14159265358979323846
-#endif
 
 double f(double x) { return sqrt(sin(x) + cos(x)); }
 
@@ -33,26 +30,18 @@ int main() {
   }
 
   double h = (b - a) / n;
-  double *y = (double *)malloc((n + 1) * sizeof(double));
-  if (!y) {
-    printf("Memory allocation failed.\n");
-    return 1;
-  }
-  for (int i = 0; i <= n; i++)
-    y[i] = f(a + i * h);
 
   // (3h/10) per group of 6, coefficients: 1, 5, 1, 6, 1, 5, 1
   double result = 0;
   int groups = n / 6;
   for (int g = 0; g < groups; g++) {
-    int s = g * 6;
-    result += y[s] + 5 * y[s + 1] + y[s + 2] + 6 * y[s + 3] + y[s + 4] +
-              5 * y[s + 5] + y[s + 6];
+    double x0 = a + g * 6 * h;
+    result += f(x0) + 5 * f(x0 + h) + f(x0 + 2 * h) + 6 * f(x0 + 3 * h) +
+              f(x0 + 4 * h) + 5 * f(x0 + 5 * h) + f(x0 + 6 * h);
   }
   result *= 3.0 * h / 10.0;
 
   printf("\nResult = %f\n", result);
 
-  free(y);
   return 0;
 }

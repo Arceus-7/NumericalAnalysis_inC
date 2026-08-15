@@ -1,10 +1,7 @@
 #include <math.h>
 #include <stdio.h>
-#include <stdlib.h>
 
-#ifndef M_PI
 #define M_PI 3.14159265358979323846
-#endif
 
 double f(double x) { return sqrt(sin(x) + cos(x)); }
 
@@ -28,37 +25,30 @@ int main() {
   scanf("%d", &n);
 
   double h = (b - a) / n;
-  double *y = (double *)malloc((n + 1) * sizeof(double));
-  if (!y) {
-    printf("Memory allocation failed.\n");
-    return 1;
-  }
-  for (int i = 0; i <= n; i++)
-    y[i] = f(a + i * h);
 
   // I_t = (h/2)[y0 + 2(y1+y2+...+yn-1) + yn]
-  double It = y[0] + y[n];
+  double It = f(a) + f(b);
   for (int i = 1; i < n; i++)
-    It += 2 * y[i];
+    It += 2 * f(a + i * h);
   It *= h / 2;
 
   printf("\nI_t = %f\n", It);
 
   // I_s = (h/3)[y0 + 4(odd terms) + 2(even terms) + yn], n must be even
+  //voodoo fucking shit man
   if (n % 2 != 0) {
     printf("I_s needs even n, skipped.\n");
   } else {
-    double Is = y[0] + y[n];
+    double Is = f(a) + f(b);
     for (int i = 1; i < n; i++) {
       if (i % 2 == 1)
-        Is += 4 * y[i];
+        Is += 4 * f(a + i * h);
       else
-        Is += 2 * y[i];
+        Is += 2 * f(a + i * h);
     }
     Is *= h / 3;
     printf("I_s = %f\n", Is);
   }
 
-  free(y);
   return 0;
 }
