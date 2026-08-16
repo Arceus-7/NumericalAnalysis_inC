@@ -14,24 +14,29 @@ int main() {
     scanf("%lf %lf", &x[i], &y[i]);
   }
 
-  for (int i = 0; i < n; i++)
+  for (int i = 0; i < n; i++) {
     dd[i][0] = y[i];
+  }
 
   // dd[i][j] = f[x_i, x_(i+1), ..., x_(i+j)]
-  for (int j = 1; j < n; j++)
-    for (int i = 0; i < n - j; i++)
+  for (int j = 1; j < n; j++) {
+    for (int i = 0; i < n - j; i++) {
       dd[i][j] = (dd[i + 1][j - 1] - dd[i][j - 1]) / (x[i + j] - x[i]);
+    }
+  }
 
   printf("\nDivided Difference Table:\n\n");
   printf("%-10s", "x");
-  for (int j = 0; j < n; j++)
+  for (int j = 0; j < n; j++) {
     printf("Order %-6d", j);
+  }
   printf("\n");
 
   for (int i = 0; i < n; i++) {
     printf("%-10.4f", x[i]);
-    for (int j = 0; j < n - i; j++)
+    for (int j = 0; j < n - i; j++) {
       printf("%-12.6f", dd[i][j]);
+    }
     printf("\n");
   }
 

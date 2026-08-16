@@ -34,20 +34,24 @@ int main() {
   }
 
   // fill remaining divided differences normally
-  for (int j = 2; j < m; j++)
-    for (int i = j; i < m; i++)
+  for (int j = 2; j < m; j++) {
+    for (int i = j; i < m; i++) {
       Q[i][j] = (Q[i][j - 1] - Q[i - 1][j - 1]) / (z[i] - z[i - j]);
+    }
+  }
 
   printf("\nDivided Difference Table:\n\n");
   printf("%-6s%-10s", "i", "z_i");
-  for (int j = 0; j < m; j++)
+  for (int j = 0; j < m; j++) {
     printf("Q[i][%-2d]    ", j);
+  }
   printf("\n");
 
   for (int i = 0; i < m; i++) {
     printf("%-6d%-10.4f", i, z[i]);
-    for (int j = 0; j <= i && j < m; j++)
+    for (int j = 0; j <= i && j < m; j++) {
       printf("%-12.6f", Q[i][j]);
+    }
     printf("\n");
   }
 

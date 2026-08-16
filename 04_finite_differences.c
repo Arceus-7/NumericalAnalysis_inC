@@ -21,27 +21,33 @@ int main() {
     bwd[i][0] = y[i];
   }
 
-  for (int j = 1; j < n; j++)
-    for (int i = 0; i < n - j; i++)
+  for (int j = 1; j < n; j++) {
+    for (int i = 0; i < n - j; i++) {
       fwd[i][j] = fwd[i + 1][j - 1] - fwd[i][j - 1];
+    }
+  }
 
   printf("\nForward Differences (Delta):\n");
   for (int j = 1; j < n; j++) {
     printf("  Delta^%d: ", j);
-    for (int i = 0; i < n - j; i++)
+    for (int i = 0; i < n - j; i++) {
       printf("%.4f  ", fwd[i][j]);
+    }
     printf("\n");
   }
 
-  for (int j = 1; j < n; j++)
-    for (int i = j; i < n; i++)
+  for (int j = 1; j < n; j++) {
+    for (int i = j; i < n; i++) {
       bwd[i][j] = bwd[i][j - 1] - bwd[i - 1][j - 1];
+    }
+  }
 
   printf("\nBackward Differences (Nabla):\n");
   for (int j = 1; j < n; j++) {
     printf("  Nabla^%d: ", j);
-    for (int i = j; i < n; i++)
+    for (int i = j; i < n; i++) {
       printf("%.4f  ", bwd[i][j]);
+    }
     printf("\n");
   }
 
@@ -50,16 +56,18 @@ int main() {
   printf("\nCentral Differences (delta):\n");
   for (int j = 1; j < n; j++) {
     printf("  delta^%d: ", j);
-    for (int i = 0; i < n - j; i++)
+    for (int i = 0; i < n - j; i++) {
       printf("%.4f  ", fwd[i][j]);
+    }
     printf("\n");
   }
 
   printf("\nShift Operator (E): E^k y_i = y_(i+k)\n");
   for (int k = 1; k < n; k++) {
     printf("  E^%d: ", k);
-    for (int i = 0; i + k < n; i++)
+    for (int i = 0; i + k < n; i++) {
       printf("%.4f  ", y[i + k]);
+    }
     printf("\n");
   }
 

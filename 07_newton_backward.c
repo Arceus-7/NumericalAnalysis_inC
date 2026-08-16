@@ -18,23 +18,28 @@ int main() {
 
   double h = x[1] - x[0];
 
-  for (int i = 0; i < n; i++)
+  for (int i = 0; i < n; i++) {
     diff[i][0] = y[i];
+  }
 
-  for (int j = 1; j < n; j++)
-    for (int i = j; i < n; i++)
+  for (int j = 1; j < n; j++) {
+    for (int i = j; i < n; i++) {
       diff[i][j] = diff[i][j - 1] - diff[i - 1][j - 1];
+    }
+  }
 
   printf("\nBackward Difference Table:\n\n");
   printf("%-10s%-12s", "x", "y");
-  for (int j = 1; j < n; j++)
+  for (int j = 1; j < n; j++) {
     printf("Nabla^%-6d", j);
+  }
   printf("\n");
 
   for (int i = 0; i < n; i++) {
     printf("%-10.4f", x[i]);
-    for (int j = 0; j <= i; j++)
+    for (int j = 0; j <= i; j++) {
       printf("%-12.4f", diff[i][j]);
+    }
     printf("\n");
   }
 

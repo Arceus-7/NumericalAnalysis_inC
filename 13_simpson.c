@@ -28,14 +28,15 @@ int main() {
 
   // I_t = (h/2)[y0 + 2(y1+y2+...+yn-1) + yn]
   double It = f(a) + f(b);
-  for (int i = 1; i < n; i++)
+  for (int i = 1; i < n; i++) {
     It += 2 * f(a + i * h);
+  }
   It *= h / 2;
 
   printf("\nI_t = %f\n", It);
 
   // I_s = (h/3)[y0 + 4(odd terms) + 2(even terms) + yn], n must be even
-  //voodoo fucking shit man
+  // voodoo fucking shit man
   if (n % 2 != 0) {
     printf("I_s needs even n, skipped.\n");
   } else {
