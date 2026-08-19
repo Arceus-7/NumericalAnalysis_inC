@@ -29,11 +29,6 @@ int main() {
   }
 
   printf("\nBackward Difference Table:\n\n");
-  printf("%-10s%-12s", "x", "y");
-  for (int j = 1; j < n; j++) {
-    printf("Nabla^%-6d", j);
-  }
-  printf("\n");
 
   for (int i = 0; i < n; i++) {
     printf("%-10.4f", x[i]);
@@ -58,8 +53,7 @@ int main() {
     result += u_term * diff[n - 1][i];
   }
 
-  printf("\nh = %.4f, u = %.4f\n", h, u);
-  printf("Interpolated value at x = %.4f is y = %.6f\n", xp, result);
+  printf("\nInterpolated value at x = %.4f is y = %.6f\n", xp, result);
 
   return 0;
 }

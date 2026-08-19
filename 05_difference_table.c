@@ -27,11 +27,6 @@ int main() {
   }
 
   printf("\nForward Difference Table:\n\n");
-  printf("%-10s%-12s", "x", "y");
-  for (int j = 1; j < n; j++) {
-    printf("D^%-8d", j);
-  }
-  printf("\n");
 
   for (int i = 0; i < n; i++) {
     printf("%-10.4f", x[i]);
@@ -53,11 +48,6 @@ int main() {
   }
 
   printf("\nBackward Difference Table:\n\n");
-  printf("%-10s%-12s", "x", "y");
-  for (int j = 1; j < n; j++) {
-    printf("Nabla^%-6d", j);
-  }
-  printf("\n");
 
   for (int i = 0; i < n; i++) {
     printf("%-10.4f", x[i]);
