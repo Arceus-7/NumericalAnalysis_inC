@@ -222,8 +222,6 @@ int main() {
   return 0;
 }
 //trapezoidal
-// idk why tf we are doing this for numerical integration when midpoint rule
-// exists
 #include <math.h>
 #include <stdio.h>
 
