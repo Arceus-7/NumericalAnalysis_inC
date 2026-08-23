@@ -30,11 +30,6 @@ int main() {
   }
 
   printf("\nForward Difference Table:\n\n");
-  printf("%-10s%-12s", "x", "y");
-  for (int j = 1; j < n; j++) {
-    printf("D^%-8d", j);
-  }
-  printf("\n");
 
   for (int i = 0; i < n; i++) {
     printf("%-10.4f", x[i]);
@@ -51,16 +46,18 @@ int main() {
   double u = (xp - x[0]) / h;
   double result = diff[0][0];
   double u_term = 1.0;
+
+  // u_term accumulates u(u-1)(u-2)...(u-i+1) / i!
   for (int i = 1; i < n; i++) {
     u_term *= (u - (i - 1)) / i;
     result += u_term * diff[0][i];
   }
 
-  printf("\nh = %.4f, u = %.4f\n", h, u);
-  printf("Interpolated value at x = %.4f is y = %.6f\n", xp, result);
+  printf("\nInterpolated value at x = %.4f is y = %.6f\n", xp, result);
 
   return 0;
 }
+
 //lagrange
 #include <stdio.h>
 
