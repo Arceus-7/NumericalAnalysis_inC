@@ -29,6 +29,26 @@ This repository is created for my personal use and coursework. The implementatio
 | `10_inverse_interpolation.c` | Inverse interpolation using Lagrange |
 | `11_hermite.c` | Hermite interpolation |
 
+### Unit III: Numerical Integration
+
+| File | Description |
+|------|-------------|
+| `12_numerical_integration.c` | Basic numerical integration |
+| `13_simpson.c` | Trapezoidal and Simpson's 1/3 rule |
+| `14_weddle.c` | Weddle's rule |
+| `15_trapezoidalrule.c` | Trapezoidal rule with accuracy control |
+
+### Unit IV: Root Finding & Linear Systems
+
+| File | Description |
+|------|-------------|
+| `16_tabulation.c` | Tabulation method for root finding |
+| `17_bisection.c` | Bisection method |
+| `18_regula_falsi.c` | Regula Falsi (False Position) method |
+| `19_newton_raphson.c` | Newton-Raphson method |
+| `20_lu_decomposition.c` | LU Decomposition (Doolittle's method) |
+| `21_gauss_jordan.c` | Gauss-Jordan elimination |
+
 ## How to compile and run
 
 You need a C compiler (GCC, Clang, or MSVC). Each file is a standalone program.
@@ -63,4 +83,4 @@ To compile everything at once (Bash):
 for f in *.c; do gcc -o "${f%.c}" "$f" -lm; done
 ```
 
-All programs are interactive. They will prompt you for input data points and the value to interpolate.
+All programs are interactive and will prompt you for input.
