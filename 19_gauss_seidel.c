@@ -4,8 +4,8 @@
 #define MAX 10
 
 int main() {
-  int n, k;
-  double a[MAX][MAX], b[MAX], x[MAX] = {0}, x_new[MAX], eps;
+  int n;
+  double a[MAX][MAX], b[MAX], x[MAX] = {0}, eps, tol;
 
   printf("Enter number of equations: ");
   scanf("%d", &n);
@@ -18,9 +18,17 @@ int main() {
     scanf("%lf", &b[i]);
   }
 
-  printf("Enter decimal places of accuracy: ");
-  scanf("%d", &k);
-  eps = pow(10, -k);
+  printf("Enter decimal places of accuracy (or tolerance): ");
+  scanf("%lf", &tol);
+
+  int k = (tol >= 1.0) ? (int)tol : (int)ceil(-log10(tol));
+  eps = (tol >= 1.0) ? pow(10, -k) : tol;
+
+  printf("\nIter\t");
+  for (int i = 0; i < n; i++) {
+    printf("x[%d]\t\t", i);
+  }
+  printf("\n");
 
   int iter = 0;
   while (iter < 100) {
@@ -33,18 +41,21 @@ int main() {
           sum -= a[i][j] * x[j];
         }
       }
-      x_new[i] = sum / a[i][i];
-      double diff = fabs(x_new[i] - x[i]);
+      double new_val = sum / a[i][i];
+      double diff = fabs(new_val - x[i]);
       if (diff > max_diff) {
         max_diff = diff;
       }
-    }
-
-    for (int i = 0; i < n; i++) {
-      x[i] = x_new[i];
+      x[i] = new_val;
     }
 
     iter++;
+    printf("%2d\t", iter);
+    for (int i = 0; i < n; i++) {
+      printf("%.6f\t", x[i]);
+    }
+    printf("\n");
+
     if (max_diff < eps) {
       break;
     }

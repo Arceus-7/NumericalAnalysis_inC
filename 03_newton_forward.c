@@ -46,7 +46,6 @@ int main() {
   double result = diff[0][0];
   double u_term = 1.0;
 
-  // u_term accumulates u(u-1)(u-2)...(u-i+1) / i!
   for (int i = 1; i < n; i++) {
     u_term *= (u - (i - 1)) / i;
     result += u_term * diff[0][i];

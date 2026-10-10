@@ -51,8 +51,6 @@ int main() {
     printf("\n");
   }
 
-  // central differences use the same values as forward differences
-  // but are indexed at half-integer points: delta y_(i+1/2) = y_(i+1) - y_i
   printf("\nCentral Differences (delta):\n");
   for (int j = 1; j < n; j++) {
     printf("  delta^%d: ", j);

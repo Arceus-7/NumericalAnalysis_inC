@@ -18,7 +18,6 @@ int main() {
     dd[i][0] = y[i];
   }
 
-  // dd[i][j] = f[x_i, x_(i+1), ..., x_(i+j)]
   for (int j = 1; j < n; j++) {
     for (int i = 0; i < n - j; i++) {
       dd[i][j] = (dd[i + 1][j - 1] - dd[i][j - 1]) / (x[i + j] - x[i]);
@@ -44,7 +43,6 @@ int main() {
   printf("\nEnter x to interpolate: ");
   scanf("%lf", &xp);
 
-  // P(x) = dd[0][0] + dd[0][1]*(x-x0) + dd[0][2]*(x-x0)(x-x1) + ...
   double result = dd[0][0];
   double product = 1.0;
 

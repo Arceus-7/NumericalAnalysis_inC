@@ -21,34 +21,38 @@ int main() {
     b = b * M_PI / 180.0;
   }
 
-  printf("Enter number of subintervals n (even for I_s): ");
+  printf("Enter number of subintervals n (even for Simpson's): ");
   scanf("%d", &n);
 
   double h = (b - a) / n;
 
-  // I_t = (h/2)[y0 + 2(y1+y2+...+yn-1) + yn]
+  printf("\n i\t x\t\t f(x)\n");
+  for (int i = 0; i <= n; i++) {
+    printf("%2d\t%.6f\t%.6f\n", i, a + i * h, f(a + i * h));
+  }
+
+  // Trapezoidal rule
   double It = f(a) + f(b);
   for (int i = 1; i < n; i++) {
     It += 2 * f(a + i * h);
   }
-  It *= h / 2;
+  It *= h / 2.0;
+  printf("\nTrapezoidal rule (I_t) = %.6f\n", It);
 
-  printf("\nI_t = %f\n", It);
-
-  // I_s = (h/3)[y0 + 4(odd terms) + 2(even terms) + yn], n must be even
-  // voodoo fucking shit man
+  // Simpson's 1/3 rule
   if (n % 2 != 0) {
-    printf("I_s needs even n, skipped.\n");
+    printf("Simpson's rule requires even n, skipped.\n");
   } else {
     double Is = f(a) + f(b);
     for (int i = 1; i < n; i++) {
-      if (i % 2 == 1)
+      if (i % 2 == 1) {
         Is += 4 * f(a + i * h);
-      else
+      } else {
         Is += 2 * f(a + i * h);
+      }
     }
-    Is *= h / 3;
-    printf("I_s = %f\n", Is);
+    Is *= h / 3.0;
+    printf("Simpson's 1/3 rule (I_s) = %.6f\n", Is);
   }
 
   return 0;

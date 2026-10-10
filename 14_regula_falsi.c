@@ -4,15 +4,17 @@
 double f(double x) { return exp(x) + log(1 + x) / log(3) - 2.2; }
 
 int main() {
-  double a, b, x, y, y1, y2, eps;
-  int k, n = 0;
+  double a, b, x, y, y1, y2, eps, tol;
+  int n = 0;
 
   printf("Enter interval [a, b]: ");
   scanf("%lf %lf", &a, &b);
-  printf("Enter decimal places of accuracy: ");
-  scanf("%d", &k);
+  printf("Enter decimal places of accuracy (or tolerance): ");
+  scanf("%lf", &tol);
 
-  eps = pow(10, -k);
+  int k = (tol >= 1.0) ? (int)tol : (int)ceil(-log10(tol));
+  eps = (tol >= 1.0) ? pow(10, -k) : tol;
+
   y1 = f(a);
   y2 = f(b);
 

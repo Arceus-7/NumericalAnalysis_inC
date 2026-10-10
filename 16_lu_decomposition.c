@@ -12,8 +12,9 @@ int main() {
 
   printf("Enter augmented matrix [A|b] row by row:\n");
   for (int i = 0; i < n; i++) {
-    for (int j = 0; j < n; j++)
+    for (int j = 0; j < n; j++) {
       scanf("%lf", &a[i][j]);
+    }
     scanf("%lf", &b[i]);
   }
 
@@ -22,8 +23,9 @@ int main() {
     // upper triangular
     for (int j = i; j < n; j++) {
       double sum = 0;
-      for (int k = 0; k < i; k++)
+      for (int k = 0; k < i; k++) {
         sum += L[i][k] * U[k][j];
+      }
       U[i][j] = a[i][j] - sum;
     }
     // lower triangular
@@ -32,8 +34,9 @@ int main() {
         L[i][i] = 1;
       } else {
         double sum = 0;
-        for (int k = 0; k < i; k++)
+        for (int k = 0; k < i; k++) {
           sum += L[j][k] * U[k][i];
+        }
         L[j][i] = (a[j][i] - sum) / U[i][i];
       }
     }
@@ -42,22 +45,41 @@ int main() {
   // forward substitution: Ly = b
   for (int i = 0; i < n; i++) {
     double sum = 0;
-    for (int j = 0; j < i; j++)
+    for (int j = 0; j < i; j++) {
       sum += L[i][j] * y[j];
+    }
     y[i] = b[i] - sum;
   }
 
   // back substitution: Ux = y
   for (int i = n - 1; i >= 0; i--) {
     double sum = 0;
-    for (int j = i + 1; j < n; j++)
+    for (int j = i + 1; j < n; j++) {
       sum += U[i][j] * x[j];
+    }
     x[i] = (y[i] - sum) / U[i][i];
   }
 
+  printf("\nLower Triangular Matrix L:\n");
+  for (int i = 0; i < n; i++) {
+    for (int j = 0; j < n; j++) {
+      printf("%10.4f", L[i][j]);
+    }
+    printf("\n");
+  }
+
+  printf("\nUpper Triangular Matrix U:\n");
+  for (int i = 0; i < n; i++) {
+    for (int j = 0; j < n; j++) {
+      printf("%10.4f", U[i][j]);
+    }
+    printf("\n");
+  }
+
   printf("\nSolution:\n");
-  for (int i = 0; i < n; i++)
+  for (int i = 0; i < n; i++) {
     printf("x[%d] = %.6f\n", i, x[i]);
+  }
 
   return 0;
 }

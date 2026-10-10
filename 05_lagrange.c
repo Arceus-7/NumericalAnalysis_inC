@@ -22,14 +22,17 @@ int main() {
 
   double result = 0.0;
 
+  printf("\n i\t x[i]\t\t y[i]\t\t L_i(x)\t\t Term (L_i * y_i)\n");
   for (int i = 0; i < n; i++) {
-    // L_i(x) = product of (x - x_j)/(x_i - x_j) for all j != i
     double Li = 1.0;
     for (int j = 0; j < n; j++) {
-      if (j != i)
+      if (j != i) {
         Li *= (xp - x[j]) / (x[i] - x[j]);
+      }
     }
-    result += Li * y[i];
+    double term = Li * y[i];
+    result += term;
+    printf("%2d\t%.6f\t%.6f\t%.6f\t%.6f\n", i, x[i], y[i], Li, term);
   }
 
   printf("\nInterpolated value at x = %.4f is y = %.6f\n", xp, result);

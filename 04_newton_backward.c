@@ -42,12 +42,10 @@ int main() {
   printf("\nEnter x to interpolate: ");
   scanf("%lf", &xp);
 
-  // u is measured backward from the last point
   double u = (xp - x[n - 1]) / h;
   double result = diff[n - 1][0];
   double u_term = 1.0;
 
-  // u_term accumulates u(u+1)(u+2)...(u+i-1) / i!
   for (int i = 1; i < n; i++) {
     u_term *= (u + (i - 1)) / i;
     result += u_term * diff[n - 1][i];

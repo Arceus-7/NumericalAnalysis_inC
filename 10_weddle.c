@@ -31,7 +31,11 @@ int main() {
 
   double h = (b - a) / n;
 
-  // (3h/10) per group of 6, coefficients: 1, 5, 1, 6, 1, 5, 1
+  printf("\n i\t x\t\t f(x)\n");
+  for (int i = 0; i <= n; i++) {
+    printf("%2d\t%.6f\t%.6f\n", i, a + i * h, f(a + i * h));
+  }
+
   double result = 0;
   int groups = n / 6;
   for (int g = 0; g < groups; g++) {
@@ -41,7 +45,7 @@ int main() {
   }
   result *= 3.0 * h / 10.0;
 
-  printf("\nResult = %f\n", result);
+  printf("\nWeddle's rule result = %.6f\n", result);
 
   return 0;
 }
