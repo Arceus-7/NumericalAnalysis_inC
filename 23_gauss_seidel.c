@@ -1,0 +1,56 @@
+#include <math.h>
+#include <stdio.h>
+
+#define MAX 10
+
+int main() {
+  int n, k;
+  double a[MAX][MAX], b[MAX], x[MAX] = {0}, eps;
+
+  printf("Enter number of equations: ");
+  scanf("%d", &n);
+
+  printf("Enter augmented matrix [A|b] row by row:\n");
+  for (int i = 0; i < n; i++) {
+    for (int j = 0; j < n; j++) {
+      scanf("%lf", &a[i][j]);
+    }
+    scanf("%lf", &b[i]);
+  }
+
+  printf("Enter decimal places of accuracy: ");
+  scanf("%d", &k);
+  eps = pow(10, -k);
+
+  int iter = 0;
+  while (iter < 100) {
+    double max_diff = 0.0;
+
+    for (int i = 0; i < n; i++) {
+      double sum = b[i];
+      for (int j = 0; j < n; j++) {
+        if (j != i) {
+          sum -= a[i][j] * x[j];
+        }
+      }
+      double new_val = sum / a[i][i];
+      double diff = fabs(new_val - x[i]);
+      if (diff > max_diff) {
+        max_diff = diff;
+      }
+      x[i] = new_val;
+    }
+
+    iter++;
+    if (max_diff < eps) {
+      break;
+    }
+  }
+
+  printf("\nSolution after %d iterations:\n", iter);
+  for (int i = 0; i < n; i++) {
+    printf("x[%d] = %.6f\n", i, x[i]);
+  }
+
+  return 0;
+}

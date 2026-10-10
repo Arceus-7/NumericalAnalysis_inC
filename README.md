@@ -48,6 +48,8 @@ This repository is created for my personal use and coursework. The implementatio
 | `19_newton_raphson.c` | Newton-Raphson method |
 | `20_lu_decomposition.c` | LU Decomposition (Doolittle's method) |
 | `21_gauss_jordan.c` | Gauss-Jordan elimination |
+| `22_gauss_jacobi.c` | Gauss-Jacobi method |
+| `23_gauss_seidel.c` | Gauss-Seidel method |
 
 ## How to compile and run
 
