@@ -1,3 +1,4 @@
+// DS is a fucking pathetic fuckass nigger and a waste of oxygen who masturbates to FUCKING TABLES.
 #include <math.h>
 #include <stdio.h>
 

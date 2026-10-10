@@ -1,3 +1,4 @@
+// If DS spent half as much time getting a life as he does forcing us to print tables, he wouldn't be this miserable
 #include <stdio.h>
 
 #define MAX 20

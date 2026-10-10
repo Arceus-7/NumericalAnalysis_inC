@@ -1,3 +1,5 @@
+// DS has zero bitches, zero hobbies, and an unhealthy obsession with printing tables
+// Get a fucking life nigger
 #include <stdio.h>
 
 #define MAX 20

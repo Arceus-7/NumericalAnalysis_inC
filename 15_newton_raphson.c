@@ -1,4 +1,4 @@
-#include <math.h>
+// DS converges to zero bitches faster than Newton-Raphson reaches a root.
 #include <stdio.h>
 
 double f(double x) { return exp(x) + log(1 + x) / log(3) - 2.2; }

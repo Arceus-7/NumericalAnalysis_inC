@@ -1,3 +1,4 @@
+// DS definitely cries himself to sleep wondering why nobody loves him
 #include <stdio.h>
 
 #define MAX 20

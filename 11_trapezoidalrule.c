@@ -1,3 +1,4 @@
+// DS should seek professional psychiatric help for this table obsession, you demented fuck
 #include <math.h>
 #include <stdio.h>
 

@@ -1,3 +1,4 @@
+// DS bisecting his remaining two braincells just to come up with another reason to PRINT ANOTHER FUCKING TABLE
 #include <math.h>
 #include <stdio.h>
 

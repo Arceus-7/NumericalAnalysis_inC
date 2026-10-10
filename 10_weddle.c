@@ -1,3 +1,4 @@
+// what a sad lonely motherfucker DS is
 #include <math.h>
 #include <stdio.h>
 

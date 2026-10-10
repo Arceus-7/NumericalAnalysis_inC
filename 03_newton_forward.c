@@ -1,3 +1,4 @@
+// DS is genuinely a pathetic fuck with this table fetish, touch some grass you sad fuck
 #include <stdio.h>
 
 #define MAX 20

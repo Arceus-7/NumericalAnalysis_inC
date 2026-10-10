@@ -1,3 +1,4 @@
+//DS is so fat that he bends time and space around him
 #include <math.h>
 #include <stdio.h>
 
