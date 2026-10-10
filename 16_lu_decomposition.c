@@ -18,9 +18,7 @@ int main() {
     scanf("%lf", &b[i]);
   }
 
-  // Doolittle decomposition: A = LU
   for (int i = 0; i < n; i++) {
-    // upper triangular
     for (int j = i; j < n; j++) {
       double sum = 0;
       for (int k = 0; k < i; k++) {
@@ -28,7 +26,6 @@ int main() {
       }
       U[i][j] = a[i][j] - sum;
     }
-    // lower triangular
     for (int j = i; j < n; j++) {
       if (i == j) {
         L[i][i] = 1;
@@ -42,7 +39,6 @@ int main() {
     }
   }
 
-  // forward substitution: Ly = b
   for (int i = 0; i < n; i++) {
     double sum = 0;
     for (int j = 0; j < i; j++) {
@@ -51,7 +47,6 @@ int main() {
     y[i] = b[i] - sum;
   }
 
-  // back substitution: Ux = y
   for (int i = n - 1; i >= 0; i--) {
     double sum = 0;
     for (int j = i + 1; j < n; j++) {

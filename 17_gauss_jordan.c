@@ -17,9 +17,7 @@ int main() {
     }
   }
 
-  // Gauss-Jordan elimination
   for (int i = 0; i < n; i++) {
-    // partial pivoting
     int max_row = i;
     for (int k = i + 1; k < n; k++) {
       if (fabs(a[k][i]) > fabs(a[max_row][i])) {
@@ -32,7 +30,6 @@ int main() {
       a[max_row][j] = temp;
     }
 
-    // make pivot = 1
     double pivot = a[i][i];
     if (fabs(pivot) < 1e-12) {
       printf("No unique solution exists.\n");
@@ -42,7 +39,6 @@ int main() {
       a[i][j] /= pivot;
     }
 
-    // eliminate column in all other rows
     for (int k = 0; k < n; k++) {
       if (k != i) {
         double factor = a[k][i];
